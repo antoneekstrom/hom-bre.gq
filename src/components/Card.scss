@@ -1,0 +1,33 @@
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+
+.card {
+    --background: var(--contrast-1);
+    --color: var(--main-1);
+
+    background-color: var(--background);
+    color: var(--color);
+    border-radius: 0.5rem;
+
+    box-sizing: border-box;
+    padding: 3rem 2rem;
+    padding-bottom: 5rem;
+
+    height: 35rem;
+    width: 23rem;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+}
+
+.card .icon svg {
+    transform: scale(2);
+}

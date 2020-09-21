@@ -1,0 +1,110 @@
+
+.paper-button {
+    --width: 20rem;
+    --height: 4.5rem;
+    --border: 3px;
+    --padding-left: 3rem;
+    --translate-0: translate(1.1rem, -1.3rem);
+    --translate-1: translate(0.7rem, -0.9rem);
+    --translate-active: translate(-3px, -3px);
+
+    display: inline-block;
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+
+    border: var(--border) solid var(--primary-0);
+    box-sizing: border-box;
+
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+
+    cursor: pointer;
+}
+
+.paper-button button {
+    width: calc(var(--width) - var(--border) * 2);
+    height: calc(var(--height) - var(--border) * 2);
+
+    background-color: var(--background);
+
+    padding: 0;
+    margin: 0;
+
+    border: inherit;
+    box-sizing: content-box;
+
+    transform-origin: 3px;
+    transform: var(--translate-0);
+
+    transition: transform 100ms ease-out, color 50ms;
+}
+
+.paper-button span.fill {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: var(--primary-0);
+    color: var(--color);
+
+    transition: inherit;
+}
+
+.paper-button span.text {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: var(--padding-left);
+
+    margin-top: auto;
+    margin-bottom: auto;
+    height: auto;
+
+    display: grid;
+    place-items: center;
+    text-align: center;
+
+    color: var(--primary-0);
+    
+    transition: inherit;
+}
+
+.paper-button span.fill {
+    transform-origin: 0;
+    transform: scaleX(0);
+}
+
+.paper-button:hover span.text {
+    color: var(--main-1);
+}
+
+.paper-button:hover span.fill {
+    transform: scaleX(1);
+}
+
+.paper-button:hover button {
+    transform: var(--translate-1);
+}
+
+.paper-button button:active {
+    transform: var(--translate-active);
+}
+
+
+.paper-button.primary button {
+    background-color: var(--primary-0);
+}
+
+.paper-button.primary span.fill {
+    background-color: var(--primary-0);
+    filter: brightness(0.8);
+}
+
+.paper-button.primary span.text {
+    color: var(--main-1);
+}

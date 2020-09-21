@@ -1,0 +1,21 @@
+
+:root {
+    --main-0: #E7E9E9;
+    --main-1: #FFFBFD; /* Mainly use main-1 */
+
+    --contrast-0: #1E1B1D;
+    --contrast-1: #40393D; /* Mainly use contrast-1 */
+    --contrast-2: #4D4449;
+
+    --primary-0: #E9437B;
+    --primary-1: #FFA4C3;
+
+    --secondary-0: #7BD9F9;
+    --secondary-1: #ABE1F3;
+
+    --background: var(--main-1);
+    --color: var(--contrast-1);
+
+    --font-size: 10px;
+    font-size: var(--font-size);
+}

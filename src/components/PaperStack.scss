@@ -1,0 +1,12 @@
+
+.paper-stack {
+    transform: translate(1rem, -1rem);
+    width: min-content;
+    height: min-content;
+    
+    transition: transform 100ms ease-out;
+}
+
+.paper-stack.hover:hover {
+    transform: translate(0.8rem, -0.8rem);
+}

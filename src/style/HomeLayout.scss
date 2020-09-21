@@ -1,0 +1,144 @@
+
+section {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.hero-section .watermarks {
+    transform: rotateZ(10deg) translateY(-20rem);
+}
+
+.background.dark {
+    --tilt: 8rem;
+    --background: var(--contrast-1);
+    --color: var(--main-1);
+
+    background-color: var(--background);
+    color: var(--color);
+
+    clip-path: polygon(0 var(--tilt), 100% 0, 100% calc(100% - var(--tilt)), 0 100%);
+}
+
+.section-inner {
+    display: grid;
+    place-items: center;
+
+    width: 60%;
+    height: 100%;
+    box-sizing: border-box;
+
+    padding: 8rem 5rem;
+}
+
+.section-inner.split {
+    grid-template-columns: 1fr 1fr;
+}
+
+.background.dark .section-inner {
+    margin: 15rem 0;
+}
+
+@media only screen and (max-width: 1000px) {
+    .section-inner {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .section-inner {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.dashed > li > *::before {
+    content: "-";
+    padding: 0 1.5rem;
+}
+
+.scroll-suggestion {
+    position: fixed;
+    left: 50%;
+    bottom: 5rem;
+
+    cursor: pointer;
+}
+
+.scroll-suggestion i {
+    color: var(--background);
+    font-size: 3.5rem;
+}
+
+span.epic {
+    position: relative;
+}
+
+span.epic :nth-child(1) {
+    font-size: 120%;
+    color: var(--primary-0);
+    cursor: pointer;
+}
+
+span.epic > span:not(:first-child) {
+    font-weight: 400;
+    font-size: 160%;
+    filter: opacity(0.7);
+    user-select: none;
+    pointer-events: none;
+
+    /* transition: transform 100ms ease-out; */
+}
+
+span.epic :nth-child(2) {
+    color: var(--primary-1);
+
+    position: absolute;
+    left: -60%;
+    top: -80%;
+}
+
+span.epic :nth-child(3) {
+    color: var(--secondary-1);
+
+    position: absolute;
+    left: 30%;
+    top: 20%;
+}
+
+svg {
+    fill: var(--color);
+}
+
+.card-section .watermarks :first-child {
+    font-size: 60rem;
+}
+
+.contact-section .section-inner {
+    gap: 5rem;
+}
+
+.contact-section .section-inner > div {
+    place-self: start;
+}
+
+.contact-section .section-inner h2 {
+    margin-top: 0;
+}
+
+.contact-section .links > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contact-section .links > div svg {
+    transform: scale(1.5);
+    margin-right: 3rem;
+}

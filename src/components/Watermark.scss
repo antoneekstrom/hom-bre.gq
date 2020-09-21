@@ -1,0 +1,36 @@
+
+.watermarks {
+    z-index: -1;
+    width: 0;
+    height: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    user-select: none;
+
+    --color: var(--main-0);
+}
+
+.watermarks.dark {
+    --color: var(--contrast-2);
+}
+
+.watermarks > h1 {
+    color: var(--color);
+    font-family: 'Lora';
+    font-weight: 500;
+    font-size: 12rem;
+    letter-spacing: 0.2em;
+
+    position: absolute;
+    margin: 0;
+    width: max-content;
+}
+
+@media only screen and (max-width: 750px) {
+    .watermarks {
+        display: none;
+    }
+}
