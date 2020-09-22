@@ -5,6 +5,9 @@
     height: min-content;
     
     transition: transform 100ms ease-out;
+
+    background-color: var(--background);
+    color: var(--color);
 }
 
 .paper-stack.hover:hover {

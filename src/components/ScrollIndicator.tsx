@@ -1,46 +1,69 @@
-import { motion, useAnimation, useMotionValue } from 'framer-motion';
-import React, { CSSProperties, PropsWithChildren, useState } from 'react';
+import { motion, MotionStyle, useAnimation, useMotionTemplate, useMotionValue, useTransform, useViewportScroll } from 'framer-motion';
+import React, { CSSProperties, PropsWithChildren, useEffect, useState } from 'react';
 import { useScrollAnimation } from '../util';
 import { coreProps } from './Common';
+import PaperButton from './PaperButton';
 import PaperStack from './PaperStack';
 import './ScrollIndicator.scss';
 
-export default function ScrollIndicator(props: {pages: number}) {
-  const y = useMotionValue('0rem');
+export default function ScrollIndicator(props: {pages: number, pageHeight: number}) {
+  const {pageHeight} = props;
 
   const scrollTo = useScrollAnimation();
+  const { scrollY, scrollYProgress } = useViewportScroll();
+
+  const y = useMotionValue('0%');
+  const yp = useMotionValue('100%');
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [])
 
   return (
-    <PaperStack style={{backgroundColor: 'var(--secondary-0)'}} className="scroll-indicator">
-      <PaperStack style={{backgroundColor: 'var(--primary-0)'}}>
-        <PaperStack style={{backgroundColor: 'var(--contrast-1)'}}>
+    <PaperStack className="scroll-indicator">
+      <PaperStack>
+        <PaperStack>
           <ol>
             <Dot i={0}>
-              <motion.div style={{y}} className="indicator"/>
+              <motion.div style={{ y } as MotionStyle} className="indicator">
+                <motion.span />
+              </motion.div>
             </Dot>
-            <Dot i={1} />
-            <Dot i={2}/>
-            <Dot i={3}/>
+            {[...Array(props.pages - 1)].map((_, i) => <Dot key={i} i={i + 1} />)}
           </ol>
         </PaperStack>
       </PaperStack>
     </PaperStack>
   )
 
-  function animate(index: number) {
-    y.set(`${3.5 * index}rem`);
-    scrollTo(index* 500);
+  function onScroll() {
+    animate(window.scrollY);
+  }
+  
+  function animate(scroll: number) {
+    const i = Math.floor(scrollY.get() / pageHeight);
+    
+    y.set(`${i * 100}%`);
+    
+    const progressBetween = (scroll % pageHeight) / pageHeight;
+    const h = (1 + progressBetween) * 50;
+
+    yp.set(`${h}%`)
   }
 
   function Dot(props: PropsWithChildren<{i: number}>) {
     return (
-      <li className="dot"><div onClick={handleClick}>{props.children}</div></li>
+      <li onClick={e => handleClick(e)}>
+        {props.children}
+        <div className="dot"/>
+      </li>
     )
 
-    function handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    function handleClick(e: React.MouseEvent<HTMLElement, MouseEvent>) {
       e.stopPropagation();
       e.preventDefault();
-      animate(props.i);
+      scrollTo(props.i * pageHeight + 10);
     }
   }
 }

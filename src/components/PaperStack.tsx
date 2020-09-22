@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { classNames, coreProps, ICoreClasses as CoreProps } from './Common';
+import { classNames, coreProps, ICoreProps as CoreProps } from './Common';
 import './PaperStack.scss';
 
 export default function PaperStack(props: PropsWithChildren<CoreProps>) {

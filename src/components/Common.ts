@@ -53,14 +53,14 @@ export function classNames(classes : IClassNames, always ?: string[] | string) :
 
 /* Core Classes */
 
-export type ICoreClasses<T = HTMLElement> = {
+export type ICoreProps<T = HTMLElement> = {
   className ?: string;
   style ?: React.CSSProperties;
   onClick ?: (e : React.MouseEvent<T, MouseEvent>) => void;
   onAuxClick ?: (e : React.MouseEvent<T, MouseEvent>) => void;
 }
 
-export function coreProps(props : ICoreClasses, className ?: string, style ?: CSSProperties) : ICoreClasses {
+export function coreProps(props : ICoreProps, className ?: string, style ?: CSSProperties) : ICoreProps {
   return {
     'style': {...props.style, ...style},
     'className': joinClassNames(className, props.className),

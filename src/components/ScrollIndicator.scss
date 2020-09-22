@@ -9,7 +9,15 @@
     width: 3.5rem;
     height: 20rem;
 
-    .paper-stack {
+    --background: var(--secondary-0);
+    > .paper-stack {
+        --background: var(--primary-0);
+        > .paper-stack {
+            --background: var(--contrast-1);
+        }
+    }
+
+    .paper-stack, ol {
         width: 100%;
         height: 100%;
 
@@ -19,31 +27,32 @@
         place-items: center;
     }
 
+    > .paper-stack > .paper-stack {
+        padding: 3rem 0;
+        box-sizing: border-box;
+    }
+
     ol {
         padding: 0;
         margin: 0;
         list-style-type: none;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        border-radius: 1rem;
 
         position: relative;
 
-        border-radius: 1rem;
-        // background-color: var(--contrast-2);
+        grid-auto-flow: row;
+        grid-auto-rows: 1fr;
+        place-items: unset;
     }
 
     li {
         display: grid;
         place-items: center;
 
-        padding: 1rem 0;
-
         position: relative;
     }
 
-    li > div {
+    li > div.dot {
         width: 1.5rem;
         height: 1.5rem;
         border-radius: 1.5rem;
@@ -54,17 +63,25 @@
     }
 
     .indicator {
-        --i: 0;
-
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 1.5rem;
-
-        background-color: var(--secondary-0);
-
+        transition: transform 100ms ease-in-out;
         position: absolute;
+        width: 100%;
+        height: 100%;
+
         z-index: 2;
 
-        transition: transform 100ms ease-in-out;
+        display: grid;
+        place-items: center;
+
+        transform-origin: top;
+
+        > span {
+            --height: inherit;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 1.5rem;
+    
+            background-color: var(--secondary-0);
+        }
     }
 }

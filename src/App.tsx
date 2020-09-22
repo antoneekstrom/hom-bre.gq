@@ -31,7 +31,7 @@ export default function App() {
       </main>
 
       <ScrollSuggestion/>
-      <ScrollIndicator pages={4} />
+      <ScrollIndicator pages={4} pageHeight={450} />
 
       <Footer/>
     </div >

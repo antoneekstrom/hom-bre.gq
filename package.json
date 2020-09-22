@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build:root": "parcel build src/index.html --out-dir build/root --public-url ./",
-    "build:subdir": "parcel build src/index.html --out-dir build/smelly-fart --public-url ./smelly-fart"
+    "build:subdir": "parcel build src/index.html --out-dir build/smelly-fart --public-url ./smelly-fart",
+    "dev": "parcel src/index.html"
   },
   "dependencies": {
     "@babel/preset-env": "^7.11.5",
